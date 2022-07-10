@@ -89,7 +89,7 @@ public:
 int main(void){
     Athlete_Student golferStudent("Golf", "BS-Kim", 1001);
     golferStudent.show();       // 부모 class 인 Athlete Class 와 Student Class 모두 show() 멤버 함수를 갖고 있다.
-                                // 자식 class 인 Athlete_Student 에서 show() 멤버 함수를 오버로딩하지 않았다면
+                                // 자식 class 인 Athlete_Student 에서 show() 멤버 함수를 오버라이딩하지 않았다면
                                 // 멤버 함수가 모호(ambiguous)하다고 하며 컴파일 에러 발생하게 된다.
 }
 
