@@ -6,6 +6,9 @@ AVL Tree 구조를 이용하면 이진 트리 (Binary Tree)가 편향되지 않�
 
 참고. AVL : Adelson-Velsky and Landis , 발명자들 이름에서 따왔다고 한다.
 
+.
+
+
 #### "Inheritance.cpp" commit
 객체 지향(Object Oriented Programming) 의 가장 기초이면서 중요한 개념인 Class.
 
