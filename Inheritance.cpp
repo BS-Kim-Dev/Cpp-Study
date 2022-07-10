@@ -32,7 +32,10 @@ public:
     void showName(){
         std::cout << "Name : " << getName() << std::endl;
     }
-};
+    friend Person operator + (const Person &person, const Person &other){
+        return Person(person.name + " & " + other.name);
+    }                            // 연산자 오버로딩을 이용하여 + 연산자를 이용해 두 객체의 name 을 합친 새로운 객체를 정의할 수 있다.
+};                               // + 연산자는 객체의 멤버 함수가 아니므로 friend 키워드를 이용해 private 을 포함한 모든 멤버에 접근할 수 있도록 해준다.
 
 class Student : virtual public Person {  // class 선언 시 colon(:) 사용하여 상속받을 부모 class 를 지정해줄 수 있다.
 private:                                 // 접근 지정자 앞에 virtual 을 붙여 가상 상속을 받아 뒤에 손자 class 생성 시 충돌을 피한다.  
@@ -91,6 +94,12 @@ int main(void){
     golferStudent.show();       // 부모 class 인 Athlete Class 와 Student Class 모두 show() 멤버 함수를 갖고 있다.
                                 // 자식 class 인 Athlete_Student 에서 show() 멤버 함수를 오버라이딩하지 않았다면
                                 // 멤버 함수가 모호(ambiguous)하다고 하며 컴파일 에러 발생하게 된다.
+    std::cout << "---------------------" << std::endl;
+    Student stu1(1001, "BS-Kim_1");
+    Athlete ath1("Ski", "BS-Kim_2");
+    Person per1 = stu1 + ath1;       // Student class 의 객체와, Athlete class 의 객체 모두 Person 객체의 속성을 갖고있다.
+    per1.showName();                 // 따라서, Person 객체의 연산자 오버로딩 기능을 이용하여 새롭게 Person 인스턴스를 정의해 줄 수 있다.
+    std::cout << "---------------------" << std::endl;
 }
 
 /*
@@ -100,6 +109,19 @@ Student Instance is created.
 Athlete Instance is created.
 Athlete_Student Instance is created.
 Name : BS-Kim
+---------------------
+Person Instance is created.
+Student Instance is created.
+Person Instance is created.
+Athlete Instance is created.
+Person Instance is created.
+Name : BS-Kim_1 & BS-Kim_2
+---------------------
+Person Instance is destroyed.
+Athlete Instance is destroyed.
+Person Instance is destroyed.
+Student Instance is destroyed.
+Person Instance is destroyed.
 Athlete_Student Instance is destroyed.
 Athlete Instance is destroyed.
 Student Instance is destroyed.
